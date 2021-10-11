@@ -3,16 +3,16 @@ class WeatherModel {
   late List<Weather> weather;
   late String base;
   late Main main;
-  late int visibility;
+  late num visibility;
   late Wind wind;
   late Clouds clouds;
   late Rain rain;
-  late int dt;
+  late num dt;
   late Sys sys;
-  late int timezone;
-  late int id;
+  late num timezone;
+  late num id;
   late String name;
-  late int cod;
+  late num cod;
 
   WeatherModel(
       this.coord,
@@ -78,8 +78,8 @@ class WeatherModel {
 }
 
 class Coord {
-  late double lon;
-  late double lat;
+  late num lon;
+  late num lat;
 
   Coord(this.lon, this.lat);
 
@@ -98,7 +98,7 @@ class Coord {
 }
 
 class Weather {
-  late int id;
+  late num id;
   late String main;
   late String description;
   late String icon;
@@ -124,12 +124,12 @@ class Weather {
 }
 
 class Main {
-  late double temp;
-  late double feelsLike;
-  late double tempMin;
-  late double tempMax;
-  late int pressure;
-  late int humidity;
+  late num temp;
+  late num feelsLike;
+  late num tempMin;
+  late num tempMax;
+  late num pressure;
+  late num humidity;
 
   Main(this.temp, this.feelsLike, this.tempMin, this.tempMax, this.pressure,
       this.humidity);
@@ -157,8 +157,8 @@ class Main {
 }
 
 class Wind {
-  late double speed;
-  late int deg;
+  late num speed;
+  late num deg;
 
   Wind(this.speed, this.deg);
 
@@ -177,7 +177,7 @@ class Wind {
 }
 
 class Clouds {
-  late int all;
+  late num all;
 
   Clouds(this.all);
 
@@ -194,11 +194,11 @@ class Clouds {
 }
 
 class Sys {
-  late int type;
-  late int id;
+  late num type;
+  late num id;
   late String country;
-  late int sunrise;
-  late int sunset;
+  late num sunrise;
+  late num sunset;
 
   Sys(this.type, this.id, this.country, this.sunrise, this.sunset);
 
@@ -223,8 +223,8 @@ class Sys {
 }
 
 class Rain {
-  late double d1h;
-  late double d3h;
+  late num d1h;
+  late num d3h;
 
   Rain(this.d3h, this.d1h);
 

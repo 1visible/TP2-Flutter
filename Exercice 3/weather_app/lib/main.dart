@@ -111,7 +111,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               _weather_data != snapshot.data) {
                             _weather_data = snapshot.data!;
                             return getWeatherWidget();
-                          } else if (snapshot.hasError) {
+                          } else if (snapshot.hasError || !snapshot.hasData) {
                             return getErrorWidget(
                                 MediaQuery.of(context).size.height * 0.8);
                           } else {
@@ -171,8 +171,9 @@ class _MyHomePageState extends State<MyHomePage> {
           height: 30,
         ),
         Container(
+          width: MediaQuery.of(context).size.width / 2,
           constraints: BoxConstraints(
-            maxWidth: MediaQuery.of(context).size.width / 2,
+            maxWidth: 281,
             maxHeight: MediaQuery.of(context).size.height / 2.5,
           ),
           child: getWeatherIcon(_weather_data.weather.first.main),
@@ -263,7 +264,8 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         FutureBuilder<ForecastModel?>(
           future: _network.getForecast(
-              lon: _weather_data.coord.lon, lat: _weather_data.coord.lat),
+              lon: _weather_data.coord.lon.toDouble(),
+              lat: _weather_data.coord.lat.toDouble()),
           builder: (context, snapshot) {
             if (!snapshot.hasError &&
                 snapshot.hasData &&
@@ -404,7 +406,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return (temperature - 274).round();
   }
 
-  int toKmh(double speed) {
+  int toKmh(num speed) {
     return (speed * 1.609344).round();
   }
 }
